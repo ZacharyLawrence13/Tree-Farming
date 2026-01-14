@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=3 uid="uid://bbghtfkh8llm0"]
+
+[ext_resource type="PackedScene" uid="uid://dn3ifpgx4o83l" path="res://scenes/clicking_manager.tscn" id="1_bw6k5"]
+[ext_resource type="PackedScene" uid="uid://cr7fpyd7pj7tj" path="res://scenes/tree.tscn" id="1_onqr8"]
+[ext_resource type="Resource" uid="uid://c4jky3awhecu7" path="res://tree resources/pine_tree.tres" id="2_ycayy"]
+[ext_resource type="Resource" uid="uid://d3lqgq607urgc" path="res://tree resources/spruce_tree.tres" id="3_ycayy"]
+
+[node name="GameScene" type="Node2D"]
+
+[node name="ClickingManager" parent="." instance=ExtResource("1_bw6k5")]
+
+[node name="Tree" parent="." instance=ExtResource("1_onqr8")]
+position = Vector2(348, 793)
+tree_data = ExtResource("2_ycayy")
+
+[node name="Tree2" parent="." instance=ExtResource("1_onqr8")]
+position = Vector2(815, 793)
+tree_data = ExtResource("3_ycayy")
+
+[node name="Tree3" parent="." instance=ExtResource("1_onqr8")]
+position = Vector2(883, 793)
+tree_data = ExtResource("3_ycayy")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="BottomUI" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -277.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="PlayableArea" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 802.0
+grow_horizontal = 2
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/PlayableArea"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.20403765, 0, 0, 0.17254902)
