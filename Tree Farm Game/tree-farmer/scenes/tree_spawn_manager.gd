@@ -4,15 +4,21 @@ extends Node2D
 @export var tree_type_resources: Array[TreeResource]
 @export var tree_scene: PackedScene
 
-@onready var tree_spawn_line: TreeSpawnLine = $TreeSpawnLine
+@onready var tree_spawner: TreeSpawner = $TreeSpawner
 
 func spawn_tree(amount: int):
 	for _i in amount:
-		var tree = tree_scene.instantiate()
-		var tree_type = tree_type_resources.pick_random()
+		var spawn_point: TreeSpawnPoint = tree_spawner.get_valid_spawn_point()
+		if spawn_point == null:
+			return
+		
+		var tree: TreeObject = tree_scene.instantiate()
+		var tree_type: TreeResource = tree_type_resources.pick_random()
 		tree.tree_data = tree_type
-		tree.position = tree_spawn_line.get_tree_spawnpoint()
+		tree.spawn_point = spawn_point
+		tree.global_position = spawn_point.global_position
 		add_child(tree)
+		spawn_point.claim(tree)
 		Events.tree_spawned.emit(tree)
 
 func _on_tree_spawn_timer_timeout() -> void:

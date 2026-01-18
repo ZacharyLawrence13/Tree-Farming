@@ -12,6 +12,7 @@ extends Node2D
 const SFX_PITCH_SCALE_MIN: float = 0.7
 const SFX_PITCH_SCALE_MAX: float = 1.3
 
+var spawn_point: TreeSpawnPoint
 var health: int
 
 func _ready() -> void:
@@ -24,6 +25,8 @@ func hit(hit_amount: int) -> void:
 	health -= hit_amount
 	tree_gui.update_health_gui(health)
 	if health <= 0:
+		if spawn_point:
+			spawn_point.release(self)
 		Events.tree_destroyed.emit(self)
 		call_deferred("queue_free")
 

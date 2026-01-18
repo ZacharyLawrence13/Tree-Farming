@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c4lx3a7y5j22c"]
+
+[ext_resource type="Script" uid="uid://dp3a4n8hqv7hd" path="res://scenes/tree_spawn_point.gd" id="1_3v3bq"]
+
+[node name="TreeSpawnPoint" type="Node2D"]
+script = ExtResource("1_3v3bq")

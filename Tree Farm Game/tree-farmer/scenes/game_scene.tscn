@@ -14,7 +14,7 @@
 click_damage = 3
 
 [node name="TreeSpawnManager" parent="." instance=ExtResource("2_rurhu")]
-position = Vector2(0, 759)
+position = Vector2(0, 355)
 tree_type_resources = Array[ExtResource("3_kk2rg")]([ExtResource("2_ycayy"), ExtResource("3_ycayy")])
 tree_scene = ExtResource("1_onqr8")
 

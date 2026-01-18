@@ -1,14 +1,50 @@
-[gd_scene load_steps=3 format=3 uid="uid://5awldt808foa"]
+[gd_scene load_steps=4 format=3 uid="uid://5awldt808foa"]
 
 [ext_resource type="Script" uid="uid://dhwvacvo1r62p" path="res://scenes/tree_spawn_manager.gd" id="1_7imlp"]
-[ext_resource type="Script" uid="uid://dhfjpo71t1bif" path="res://scenes/tree_spawn_line.gd" id="2_cim1l"]
+[ext_resource type="Script" uid="uid://dhfjpo71t1bif" path="res://scenes/tree_spawner.gd" id="2_cim1l"]
+[ext_resource type="PackedScene" uid="uid://c4lx3a7y5j22c" path="res://scenes/tree_spawn_point.tscn" id="3_cim1l"]
 
 [node name="TreeSpawnManager" type="Node2D"]
 script = ExtResource("1_7imlp")
 
-[node name="TreeSpawnLine" type="Line2D" parent="."]
-points = PackedVector2Array(100, 0, 200, 0, 300, 0, 400, 0, 500, 0, 600, 0, 700, 0, 800, 0, 900, 0, 1000, 0, 1100, 0, 1200, 0, 1300, 0, 1400, 0, 1500, 0, 1600, 0, 1700, 0, 1800, 0)
+[node name="TreeSpawner" type="Node2D" parent="."]
 script = ExtResource("2_cim1l")
+
+[node name="TreeSpawnPoint" parent="TreeSpawner" instance=ExtResource("3_cim1l")]
+position = Vector2(110, 0)
+
+[node name="TreeSpawnPoint2" parent="TreeSpawner" instance=ExtResource("3_cim1l")]
+position = Vector2(255, 0)
+
+[node name="TreeSpawnPoint3" parent="TreeSpawner" instance=ExtResource("3_cim1l")]
+position = Vector2(437, 0)
+
+[node name="TreeSpawnPoint4" parent="TreeSpawner" instance=ExtResource("3_cim1l")]
+position = Vector2(606, 0)
+
+[node name="TreeSpawnPoint5" parent="TreeSpawner" instance=ExtResource("3_cim1l")]
+position = Vector2(763, 0)
+
+[node name="TreeSpawnPoint6" parent="TreeSpawner" instance=ExtResource("3_cim1l")]
+position = Vector2(932, 0)
+
+[node name="TreeSpawnPoint7" parent="TreeSpawner" instance=ExtResource("3_cim1l")]
+position = Vector2(1083, 0)
+
+[node name="TreeSpawnPoint8" parent="TreeSpawner" instance=ExtResource("3_cim1l")]
+position = Vector2(1274, 0)
+
+[node name="TreeSpawnPoint9" parent="TreeSpawner" instance=ExtResource("3_cim1l")]
+position = Vector2(1396, 0)
+
+[node name="TreeSpawnPoint10" parent="TreeSpawner" instance=ExtResource("3_cim1l")]
+position = Vector2(1525, 0)
+
+[node name="TreeSpawnPoint11" parent="TreeSpawner" instance=ExtResource("3_cim1l")]
+position = Vector2(1625, 0)
+
+[node name="TreeSpawnPoint12" parent="TreeSpawner" instance=ExtResource("3_cim1l")]
+position = Vector2(1788, 0)
 
 [node name="TreeSpawnTimer" type="Timer" parent="."]
 wait_time = 5.0
