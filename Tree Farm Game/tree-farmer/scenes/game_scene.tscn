@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://bbghtfkh8llm0"]
 
-[ext_resource type="PackedScene" uid="uid://dn3ifpgx4o83l" path="res://scenes/clicking_manager.tscn" id="1_bw6k5"]
-[ext_resource type="PackedScene" uid="uid://cr7fpyd7pj7tj" path="res://scenes/tree.tscn" id="1_onqr8"]
-[ext_resource type="PackedScene" uid="uid://5awldt808foa" path="res://scenes/tree_spawn_manager.tscn" id="2_rurhu"]
+[ext_resource type="PackedScene" uid="uid://dn3ifpgx4o83l" path="res://scenes/clicking manager/clicking_manager.tscn" id="1_bw6k5"]
+[ext_resource type="PackedScene" uid="uid://cr7fpyd7pj7tj" path="res://scenes/tree/tree.tscn" id="1_onqr8"]
+[ext_resource type="PackedScene" uid="uid://5awldt808foa" path="res://scenes/tree spawning/tree_spawn_manager.tscn" id="2_rurhu"]
 [ext_resource type="Resource" uid="uid://c4jky3awhecu7" path="res://tree resources/pine_tree.tres" id="2_ycayy"]
 [ext_resource type="Script" uid="uid://dlq72ijj5831v" path="res://custom resources/tree_resource.gd" id="3_kk2rg"]
 [ext_resource type="Resource" uid="uid://d3lqgq607urgc" path="res://tree resources/spruce_tree.tres" id="3_ycayy"]
@@ -14,7 +14,7 @@
 click_damage = 3
 
 [node name="TreeSpawnManager" parent="." instance=ExtResource("2_rurhu")]
-position = Vector2(0, 355)
+position = Vector2(0, 374)
 tree_type_resources = Array[ExtResource("3_kk2rg")]([ExtResource("2_ycayy"), ExtResource("3_ycayy")])
 tree_scene = ExtResource("1_onqr8")
 

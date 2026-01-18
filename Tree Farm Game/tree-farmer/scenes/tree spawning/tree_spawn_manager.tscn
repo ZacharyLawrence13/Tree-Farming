@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://5awldt808foa"]
 
-[ext_resource type="Script" uid="uid://dhwvacvo1r62p" path="res://scenes/tree_spawn_manager.gd" id="1_7imlp"]
-[ext_resource type="Script" uid="uid://dhfjpo71t1bif" path="res://scenes/tree_spawner.gd" id="2_cim1l"]
-[ext_resource type="PackedScene" uid="uid://c4lx3a7y5j22c" path="res://scenes/tree_spawn_point.tscn" id="3_cim1l"]
+[ext_resource type="Script" uid="uid://dhwvacvo1r62p" path="res://scenes/tree spawning/tree_spawn_manager.gd" id="1_7imlp"]
+[ext_resource type="Script" uid="uid://dhfjpo71t1bif" path="res://scenes/tree spawning/tree_spawner.gd" id="2_cim1l"]
+[ext_resource type="PackedScene" uid="uid://c4lx3a7y5j22c" path="res://scenes/tree spawning/tree_spawn_point.tscn" id="3_cim1l"]
 
 [node name="TreeSpawnManager" type="Node2D"]
 script = ExtResource("1_7imlp")

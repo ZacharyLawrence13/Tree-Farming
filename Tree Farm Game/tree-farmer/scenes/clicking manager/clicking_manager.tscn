@@ -1,10 +1,25 @@
 [gd_scene load_steps=7 format=3 uid="uid://dn3ifpgx4o83l"]
 
-[ext_resource type="Script" uid="uid://dtn01exxhmfny" path="res://scenes/clicking_manager.gd" id="1_c07ay"]
+[ext_resource type="Script" uid="uid://dtn01exxhmfny" path="res://scenes/clicking manager/clicking_manager.gd" id="1_c07ay"]
 [ext_resource type="Texture2D" uid="uid://dc418wfk6lqyj" path="res://assets/graphics/cursors/resize_d_cross_diagonal.png" id="2_nj7j4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_15rgw"]
 size = Vector2(32, 32)
+
+[sub_resource type="Animation" id="Animation_erscc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ChopCursor:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.4, 1.4)]
+}
 
 [sub_resource type="Animation" id="Animation_nj7j4"]
 resource_name = "click"
@@ -21,21 +36,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(1.4, 1.4), Vector2(2, 2), Vector2(1.4, 1.4)]
-}
-
-[sub_resource type="Animation" id="Animation_erscc"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ChopCursor:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1.4, 1.4)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_iwi6o"]

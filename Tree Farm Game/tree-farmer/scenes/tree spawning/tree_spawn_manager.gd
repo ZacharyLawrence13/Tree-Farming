@@ -6,6 +6,8 @@ extends Node2D
 
 @onready var tree_spawner: TreeSpawner = $TreeSpawner
 
+var spawns_per_wave: int = 1
+
 func spawn_tree(amount: int):
 	for _i in amount:
 		var spawn_point: TreeSpawnPoint = tree_spawner.get_valid_spawn_point()
@@ -22,4 +24,4 @@ func spawn_tree(amount: int):
 		Events.tree_spawned.emit(tree)
 
 func _on_tree_spawn_timer_timeout() -> void:
-	spawn_tree(1)
+	spawn_tree(spawns_per_wave)
