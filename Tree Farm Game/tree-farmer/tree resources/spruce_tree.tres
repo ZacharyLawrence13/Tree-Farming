@@ -1,12 +1,14 @@
-[gd_resource type="Resource" script_class="TreeResource" load_steps=3 format=3 uid="uid://d3lqgq607urgc"]
+[gd_resource type="Resource" script_class="TreeResource" load_steps=4 format=3 uid="uid://d3lqgq607urgc"]
 
 [ext_resource type="Script" uid="uid://dlq72ijj5831v" path="res://custom resources/tree_resource.gd" id="1_65ubj"]
-[ext_resource type="Texture2D" uid="uid://db7xd1l86860u" path="res://assets/graphics/spruce tree.png" id="2_3078h"]
+[ext_resource type="Texture2D" uid="uid://db7xd1l86860u" path="res://assets/graphics/trees/spruce tree.png" id="2_3078h"]
+[ext_resource type="AudioStream" uid="uid://b47dqpaqrjg17" path="res://assets/audio/sfx/spruce-tree-hit.mp3" id="2_xyqs2"]
 
 [resource]
 script = ExtResource("1_65ubj")
 tree_texture = ExtResource("2_3078h")
-tree_health = 50
+tree_hit_noise = ExtResource("2_xyqs2")
+tree_health = 20
 trunk_width = 75
 trunk_height = 50
 metadata/_custom_type_script = "uid://dlq72ijj5831v"

@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://80qpqe1v7nsh"]
+
+[ext_resource type="Theme" uid="uid://c83fms1gj1tns" path="res://main_theme.tres" id="1_ek4fl"]
+[ext_resource type="Script" uid="uid://bpwcq6p2ec84v" path="res://scenes/gui/tree_gui.gd" id="2_3ya7f"]
+
+[node name="TreeGUI" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -153.0
+offset_right = 153.0
+offset_bottom = 40.0
+theme = ExtResource("1_ek4fl")
+script = ExtResource("2_3ya7f")
+
+[node name="HealthLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 5.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Tree Health"
+horizontal_alignment = 1
+vertical_alignment = 1

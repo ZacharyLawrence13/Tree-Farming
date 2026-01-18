@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://5awldt808foa"]
+
+[ext_resource type="Script" uid="uid://dhwvacvo1r62p" path="res://scenes/tree_spawn_manager.gd" id="1_7imlp"]
+[ext_resource type="Script" uid="uid://dhfjpo71t1bif" path="res://scenes/tree_spawn_line.gd" id="2_cim1l"]
+
+[node name="TreeSpawnManager" type="Node2D"]
+script = ExtResource("1_7imlp")
+
+[node name="TreeSpawnLine" type="Line2D" parent="."]
+points = PackedVector2Array(100, 0, 200, 0, 300, 0, 400, 0, 500, 0, 600, 0, 700, 0, 800, 0, 900, 0, 1000, 0, 1100, 0, 1200, 0, 1300, 0, 1400, 0, 1500, 0, 1600, 0, 1700, 0, 1800, 0)
+script = ExtResource("2_cim1l")
+
+[node name="TreeSpawnTimer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[connection signal="timeout" from="TreeSpawnTimer" to="." method="_on_tree_spawn_timer_timeout"]

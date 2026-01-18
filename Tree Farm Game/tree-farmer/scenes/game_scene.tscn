@@ -1,27 +1,53 @@
-[gd_scene load_steps=5 format=3 uid="uid://bbghtfkh8llm0"]
+[gd_scene load_steps=8 format=3 uid="uid://bbghtfkh8llm0"]
 
 [ext_resource type="PackedScene" uid="uid://dn3ifpgx4o83l" path="res://scenes/clicking_manager.tscn" id="1_bw6k5"]
 [ext_resource type="PackedScene" uid="uid://cr7fpyd7pj7tj" path="res://scenes/tree.tscn" id="1_onqr8"]
+[ext_resource type="PackedScene" uid="uid://5awldt808foa" path="res://scenes/tree_spawn_manager.tscn" id="2_rurhu"]
 [ext_resource type="Resource" uid="uid://c4jky3awhecu7" path="res://tree resources/pine_tree.tres" id="2_ycayy"]
+[ext_resource type="Script" uid="uid://dlq72ijj5831v" path="res://custom resources/tree_resource.gd" id="3_kk2rg"]
 [ext_resource type="Resource" uid="uid://d3lqgq607urgc" path="res://tree resources/spruce_tree.tres" id="3_ycayy"]
+[ext_resource type="Theme" uid="uid://c83fms1gj1tns" path="res://main_theme.tres" id="5_y3j0m"]
 
 [node name="GameScene" type="Node2D"]
 
 [node name="ClickingManager" parent="." instance=ExtResource("1_bw6k5")]
+click_damage = 3
 
-[node name="Tree" parent="." instance=ExtResource("1_onqr8")]
-position = Vector2(348, 793)
-tree_data = ExtResource("2_ycayy")
-
-[node name="Tree2" parent="." instance=ExtResource("1_onqr8")]
-position = Vector2(815, 793)
-tree_data = ExtResource("3_ycayy")
-
-[node name="Tree3" parent="." instance=ExtResource("1_onqr8")]
-position = Vector2(883, 793)
-tree_data = ExtResource("3_ycayy")
+[node name="TreeSpawnManager" parent="." instance=ExtResource("2_rurhu")]
+position = Vector2(0, 759)
+tree_type_resources = Array[ExtResource("3_kk2rg")]([ExtResource("2_ycayy"), ExtResource("3_ycayy")])
+tree_scene = ExtResource("1_onqr8")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TopUI" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 54.0
+grow_horizontal = 2
+theme = ExtResource("5_y3j0m")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/TopUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.22, 0.20548001, 0.1936, 1)
+
+[node name="Label" type="Label" parent="CanvasLayer/TopUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Click. The. Trees."
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="BottomUI" type="Control" parent="CanvasLayer"]
 layout_mode = 3
@@ -32,6 +58,15 @@ anchor_bottom = 1.0
 offset_top = -277.0
 grow_horizontal = 2
 grow_vertical = 0
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/BottomUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
 
 [node name="PlayableArea" type="Control" parent="CanvasLayer"]
 layout_mode = 3
