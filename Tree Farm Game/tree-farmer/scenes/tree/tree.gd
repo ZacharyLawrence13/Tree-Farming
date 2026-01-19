@@ -23,11 +23,13 @@ func hit(hit_amount: int) -> void:
 	animation_player.current_animation = "tree_hit"
 	play_sfx()
 	health -= hit_amount
+	health = max(health, 0)
 	tree_gui.update_health_gui(health)
 	if health <= 0:
 		if spawn_point:
 			spawn_point.release(self)
 		Events.tree_destroyed.emit(self)
+		await hit_sfx.finished
 		call_deferred("queue_free")
 
 

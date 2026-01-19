@@ -5,8 +5,23 @@ extends Node2D
 @export var tree_scene: PackedScene
 
 @onready var tree_spawner: TreeSpawner = $TreeSpawner
+@onready var tree_spawn_timer: Timer = $TreeSpawnTimer
 
-var spawns_per_wave: int = 1
+var plants_per_cooldown: int = 1
+var tree_planting_cooldown: float = 3.0
+
+func _ready() -> void:
+	tree_spawn_timer.wait_time = tree_planting_cooldown
+	Upgrades.planting_speed.connect(upgrade_tree_planting_cooldown)
+	Upgrades.planting_amount.connect(upgrade_planting_amount)
+
+func upgrade_planting_amount(amount: int):
+	plants_per_cooldown += amount
+
+func upgrade_tree_planting_cooldown(amount: float):
+	tree_planting_cooldown = tree_planting_cooldown * (1 - amount)
+	tree_planting_cooldown = max(tree_planting_cooldown, 0.5)
+	tree_spawn_timer.wait_time = tree_planting_cooldown
 
 func spawn_tree(amount: int):
 	for _i in amount:
@@ -24,4 +39,4 @@ func spawn_tree(amount: int):
 		Events.tree_spawned.emit(tree)
 
 func _on_tree_spawn_timer_timeout() -> void:
-	spawn_tree(spawns_per_wave)
+	spawn_tree(plants_per_cooldown)

@@ -1,7 +1,24 @@
-[gd_scene load_steps=7 format=3 uid="uid://dn3ifpgx4o83l"]
+[gd_scene load_steps=10 format=3 uid="uid://dn3ifpgx4o83l"]
 
 [ext_resource type="Script" uid="uid://dtn01exxhmfny" path="res://scenes/clicking manager/clicking_manager.gd" id="1_c07ay"]
 [ext_resource type="Texture2D" uid="uid://dc418wfk6lqyj" path="res://assets/graphics/cursors/resize_d_cross_diagonal.png" id="2_nj7j4"]
+
+[sub_resource type="Curve" id="Curve_jvpev"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.9873948, 0), -3.00843, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_88jcx"]
+curve = SubResource("Curve_jvpev")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_548et"]
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+initial_velocity_min = 125.0
+initial_velocity_max = 175.0
+gravity = Vector3(0, 300, 0)
+scale_min = 3.0
+scale_max = 3.0
+scale_curve = SubResource("CurveTexture_88jcx")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_15rgw"]
 size = Vector2(32, 32)
@@ -45,10 +62,22 @@ _data = {
 }
 
 [node name="ClickingManager" type="Area2D"]
+top_level = true
+z_index = 100
 script = ExtResource("1_c07ay")
+
+[node name="HitParticles" type="GPUParticles2D" parent="."]
+z_index = 10
+emitting = false
+amount = 24
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_548et")
 
 [node name="ChopCursor" type="Sprite2D" parent="."]
 z_index = 10
+texture_filter = 1
 scale = Vector2(1.4, 1.4)
 texture = ExtResource("2_nj7j4")
 
@@ -60,7 +89,31 @@ libraries = {
 &"": SubResource("AnimationLibrary_iwi6o")
 }
 
-[node name="ChopCooldown" type="Timer" parent="."]
+[node name="ChopCooldownTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="CursorControl" type="Control" parent="."]
+z_index = 10
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 3
+anchors_preset = 0
+offset_left = -37.0
+offset_top = 25.0
+offset_right = 38.0
+offset_bottom = 35.0
+
+[node name="CursorProgressbar" type="ProgressBar" parent="CursorControl"]
+modulate = Color(1, 0, 0, 1)
+custom_minimum_size = Vector2(75, 10)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 0.5
+show_percentage = false
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_area_exited"]
+[connection signal="timeout" from="ChopCooldownTimer" to="." method="_on_chop_cooldown_timeout"]

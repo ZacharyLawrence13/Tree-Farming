@@ -11,4 +11,5 @@ tree_hit_noise = ExtResource("2_xyqs2")
 tree_health = 20
 trunk_width = 75
 trunk_height = 50
+tree_value = 2
 metadata/_custom_type_script = "uid://dlq72ijj5831v"

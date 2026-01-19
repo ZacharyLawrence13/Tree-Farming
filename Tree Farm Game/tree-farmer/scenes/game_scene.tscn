@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bbghtfkh8llm0"]
+[gd_scene load_steps=10 format=3 uid="uid://bbghtfkh8llm0"]
 
 [ext_resource type="PackedScene" uid="uid://dn3ifpgx4o83l" path="res://scenes/clicking manager/clicking_manager.tscn" id="1_bw6k5"]
 [ext_resource type="PackedScene" uid="uid://cr7fpyd7pj7tj" path="res://scenes/tree/tree.tscn" id="1_onqr8"]
@@ -7,6 +7,8 @@
 [ext_resource type="Script" uid="uid://dlq72ijj5831v" path="res://custom resources/tree_resource.gd" id="3_kk2rg"]
 [ext_resource type="Resource" uid="uid://d3lqgq607urgc" path="res://tree resources/spruce_tree.tres" id="3_ycayy"]
 [ext_resource type="Theme" uid="uid://c83fms1gj1tns" path="res://main_theme.tres" id="5_y3j0m"]
+[ext_resource type="Script" uid="uid://wj8fhgu0qeop" path="res://scenes/game_manager.gd" id="7_b5spy"]
+[ext_resource type="Script" uid="uid://rtntapadthqe" path="res://scenes/gui/upgrade_gui.gd" id="9_utbpp"]
 
 [node name="GameScene" type="Node2D"]
 
@@ -17,6 +19,9 @@ click_damage = 3
 position = Vector2(0, 374)
 tree_type_resources = Array[ExtResource("3_kk2rg")]([ExtResource("2_ycayy"), ExtResource("3_ycayy")])
 tree_scene = ExtResource("1_onqr8")
+
+[node name="GameManager" type="Node" parent="."]
+script = ExtResource("7_b5spy")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -38,18 +43,27 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.22, 0.20548001, 0.1936, 1)
 
-[node name="Label" type="Label" parent="CanvasLayer/TopUI"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/TopUI"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 9.0
+offset_right = 255.0
+offset_bottom = 49.0
+theme_override_constants/separation = 49
+
+[node name="Label" type="Label" parent="CanvasLayer/TopUI/HBoxContainer"]
+layout_mode = 2
 text = "Click. The. Trees."
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="BottomUI" type="Control" parent="CanvasLayer"]
+[node name="Label2" type="Label" parent="CanvasLayer/TopUI/HBoxContainer"]
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="UpgradeGUI" type="Control" parent="CanvasLayer"]
 layout_mode = 3
 anchors_preset = 12
 anchor_top = 1.0
@@ -58,8 +72,10 @@ anchor_bottom = 1.0
 offset_top = -277.0
 grow_horizontal = 2
 grow_vertical = 0
+theme = ExtResource("5_y3j0m")
+script = ExtResource("9_utbpp")
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/BottomUI"]
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/UpgradeGUI"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -67,6 +83,46 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/UpgradeGUI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -50.0
+offset_right = 100.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 54
+alignment = 1
+
+[node name="DamageUpgrade" type="Button" parent="CanvasLayer/UpgradeGUI/HBoxContainer"]
+custom_minimum_size = Vector2(275, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Upgrade Damage"
+
+[node name="SpeedUpgrade" type="Button" parent="CanvasLayer/UpgradeGUI/HBoxContainer"]
+custom_minimum_size = Vector2(275, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Upgrade Speed"
+
+[node name="PlantSpeedUpgrade" type="Button" parent="CanvasLayer/UpgradeGUI/HBoxContainer"]
+custom_minimum_size = Vector2(275, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Upgrade Planting Speed"
+
+[node name="PlantAmountUpgrade" type="Button" parent="CanvasLayer/UpgradeGUI/HBoxContainer"]
+custom_minimum_size = Vector2(275, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Upgrade Planting Amount"
 
 [node name="PlayableArea" type="Control" parent="CanvasLayer"]
 layout_mode = 3
@@ -83,3 +139,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.20403765, 0, 0, 0.17254902)
+
+[connection signal="pressed" from="CanvasLayer/UpgradeGUI/HBoxContainer/DamageUpgrade" to="CanvasLayer/UpgradeGUI" method="_on_damage_upgrade_pressed"]
+[connection signal="pressed" from="CanvasLayer/UpgradeGUI/HBoxContainer/SpeedUpgrade" to="CanvasLayer/UpgradeGUI" method="_on_speed_upgrade_pressed"]
+[connection signal="pressed" from="CanvasLayer/UpgradeGUI/HBoxContainer/PlantSpeedUpgrade" to="CanvasLayer/UpgradeGUI" method="_on_plant_speed_upgrade_pressed"]
+[connection signal="pressed" from="CanvasLayer/UpgradeGUI/HBoxContainer/PlantAmountUpgrade" to="CanvasLayer/UpgradeGUI" method="_on_plant_amount_upgrade_pressed"]
