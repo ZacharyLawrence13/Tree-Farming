@@ -6,7 +6,7 @@ extends Area2D
 
 @onready var clicking_collision: CollisionShape2D = $ClickingCollision
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-@onready var chop_cursor: Sprite2D = $ChopCursor
+@onready var chop_cursor: Sprite2D = $CanvasLayer/ChopCursor
 @onready var hit_particles: GPUParticles2D = $HitParticles
 @onready var chop_cooldown_timer: Timer = $ChopCooldownTimer
 @onready var cursor_progressbar: ProgressBar = $CursorControl/CursorProgressbar
@@ -31,6 +31,7 @@ func upgrade_speed(amount: float) -> void:
 	update_cooldown(click_cooldown)
 
 func _process(_delta: float) -> void:
+	chop_cursor.global_position = get_viewport().get_mouse_position()
 	position = get_global_mouse_position()
 	if !chop_cooldown_timer.is_stopped():
 		cursor_progressbar.value = click_cooldown - chop_cooldown_timer.time_left

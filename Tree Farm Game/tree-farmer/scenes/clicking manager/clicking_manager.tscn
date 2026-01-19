@@ -28,7 +28,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ChopCursor:scale")
+tracks/0/path = NodePath("CanvasLayer/ChopCursor:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -45,7 +45,7 @@ step = 0.03
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ChopCursor:scale")
+tracks/0/path = NodePath("CanvasLayer/ChopCursor:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -74,12 +74,6 @@ one_shot = true
 explosiveness = 1.0
 randomness = 1.0
 process_material = SubResource("ParticleProcessMaterial_548et")
-
-[node name="ChopCursor" type="Sprite2D" parent="."]
-z_index = 10
-texture_filter = 1
-scale = Vector2(1.4, 1.4)
-texture = ExtResource("2_nj7j4")
 
 [node name="ClickingCollision" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_15rgw")
@@ -113,6 +107,15 @@ grow_horizontal = 2
 grow_vertical = 2
 max_value = 0.5
 show_percentage = false
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 100
+
+[node name="ChopCursor" type="Sprite2D" parent="CanvasLayer"]
+z_index = 10
+texture_filter = 1
+scale = Vector2(1.4, 1.4)
+texture = ExtResource("2_nj7j4")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_area_exited"]
