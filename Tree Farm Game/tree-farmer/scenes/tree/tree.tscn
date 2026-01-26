@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://cr7fpyd7pj7tj"]
+[gd_scene load_steps=8 format=3 uid="uid://cr7fpyd7pj7tj"]
 
 [ext_resource type="Script" uid="uid://cx7n31emgw68d" path="res://scenes/tree/tree.gd" id="1_avsvi"]
+[ext_resource type="PackedScene" uid="uid://ctrrj1g83rsvj" path="res://scenes/tree_piece.tscn" id="2_4ol1s"]
 [ext_resource type="Texture2D" uid="uid://j4jbxittq2gx" path="res://icon.svg" id="2_vplca"]
 [ext_resource type="PackedScene" uid="uid://80qpqe1v7nsh" path="res://scenes/gui/tree_gui.tscn" id="3_viusy"]
 
@@ -44,6 +45,7 @@ _data = {
 
 [node name="Tree" type="Node2D" groups=["tree"]]
 script = ExtResource("1_avsvi")
+tree_piece = ExtResource("2_4ol1s")
 
 [node name="TreeSprite" type="Sprite2D" parent="."]
 texture = ExtResource("2_vplca")

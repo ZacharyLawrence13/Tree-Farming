@@ -12,16 +12,6 @@ var tree_planting_cooldown: float = 3.0
 
 func _ready() -> void:
 	tree_spawn_timer.wait_time = tree_planting_cooldown
-	Upgrades.planting_speed.connect(upgrade_tree_planting_cooldown)
-	Upgrades.planting_amount.connect(upgrade_planting_amount)
-
-func upgrade_planting_amount(amount: int):
-	plants_per_cooldown += amount
-
-func upgrade_tree_planting_cooldown(amount: float):
-	tree_planting_cooldown = tree_planting_cooldown * (1 - amount)
-	tree_planting_cooldown = max(tree_planting_cooldown, 0.5)
-	tree_spawn_timer.wait_time = tree_planting_cooldown
 
 func spawn_tree(amount: int):
 	for _i in amount:

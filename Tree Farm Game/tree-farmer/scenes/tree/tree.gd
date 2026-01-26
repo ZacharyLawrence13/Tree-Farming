@@ -2,6 +2,7 @@ class_name TreeObject
 extends Node2D
 
 @export var tree_data: TreeResource
+@export var tree_piece: PackedScene
 
 @onready var tree_sprite: Sprite2D = $TreeSprite
 @onready var chopping_collision: CollisionShape2D = $TreeChoppingArea2D/ChoppingCollision
@@ -31,7 +32,6 @@ func hit(hit_amount: int) -> void:
 		Events.tree_destroyed.emit(self)
 		await hit_sfx.finished
 		call_deferred("queue_free")
-
 
 #region Apply Juice
 func play_sfx() -> void:

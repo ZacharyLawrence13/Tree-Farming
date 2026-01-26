@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bbghtfkh8llm0"]
+[gd_scene load_steps=11 format=3 uid="uid://bbghtfkh8llm0"]
 
 [ext_resource type="PackedScene" uid="uid://dn3ifpgx4o83l" path="res://scenes/clicking manager/clicking_manager.tscn" id="1_bw6k5"]
 [ext_resource type="PackedScene" uid="uid://cr7fpyd7pj7tj" path="res://scenes/tree/tree.tscn" id="1_onqr8"]
@@ -8,6 +8,7 @@
 [ext_resource type="Resource" uid="uid://d3lqgq607urgc" path="res://tree resources/spruce_tree.tres" id="3_ycayy"]
 [ext_resource type="Theme" uid="uid://c83fms1gj1tns" path="res://main_theme.tres" id="5_y3j0m"]
 [ext_resource type="Script" uid="uid://wj8fhgu0qeop" path="res://scenes/game_manager.gd" id="7_b5spy"]
+[ext_resource type="Script" uid="uid://dlujhbhgcsbha" path="res://scenes/upgrade_manager.gd" id="7_mw25s"]
 [ext_resource type="Script" uid="uid://rtntapadthqe" path="res://scenes/gui/upgrade_gui.gd" id="9_utbpp"]
 
 [node name="GameScene" type="Node2D"]
@@ -19,6 +20,11 @@ click_damage = 3
 position = Vector2(0, 374)
 tree_type_resources = Array[ExtResource("3_kk2rg")]([ExtResource("2_ycayy"), ExtResource("3_ycayy")])
 tree_scene = ExtResource("1_onqr8")
+
+[node name="UpgradeManager" type="Node" parent="." node_paths=PackedStringArray("clickingManager", "treeSpawnManager")]
+script = ExtResource("7_mw25s")
+clickingManager = NodePath("../ClickingManager")
+treeSpawnManager = NodePath("../TreeSpawnManager")
 
 [node name="GameManager" type="Node" parent="."]
 script = ExtResource("7_b5spy")

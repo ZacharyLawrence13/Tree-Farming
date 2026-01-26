@@ -8,7 +8,6 @@ extends Area2D
 @onready var clicking_collision: CollisionShape2D = $ClickingCollision
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var chop_cursor: Sprite2D = $CanvasLayer/ChopCursor
-#@onready var hit_particles: GPUParticles2D = $HitParticles
 @onready var chop_cooldown_timer: Timer = $ChopCooldownTimer
 @onready var cursor_progressbar: ProgressBar = $CursorControl/CursorProgressbar
 
@@ -20,16 +19,6 @@ func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	update_cooldown(click_cooldown)
 	Events.tree_destroyed.connect(_on_tree_destroyed)
-	Upgrades.clicker_damage.connect(upgrade_damage)
-	Upgrades.clicker_speed.connect(upgrade_speed)
-
-func upgrade_damage(amount: int) -> void:
-	click_damage += amount
-
-func upgrade_speed(amount: float) -> void:
-	click_cooldown = click_cooldown * (1 - amount)
-	click_cooldown = max(click_cooldown, 0.05)
-	update_cooldown(click_cooldown)
 
 func _process(_delta: float) -> void:
 	chop_cursor.global_position = get_viewport().get_mouse_position()
@@ -42,9 +31,9 @@ func _input(event: InputEvent) -> void:
 		if can_chop:
 			animation_player.current_animation = "click"
 			var hit_part = hit_particles.instantiate()
-			add_child(hit_part)
+			get_parent().add_child(hit_part)
+			hit_part.global_position = get_global_mouse_position()
 			hit_part.restart()
-			#hit_particles.restart()
 			for tree in targets:
 				tree.hit(click_damage)
 			chop_cooldown_timer.start()

@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://ctrrj1g83rsvj"]
+
+[ext_resource type="Texture2D" uid="uid://dc418wfk6lqyj" path="res://assets/graphics/cursors/resize_d_cross_diagonal.png" id="1_ehjma"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7lehc"]
+radius = 18.0
+height = 84.0
+
+[node name="TreePiece" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.2499999, 3.4375)
+texture = ExtResource("1_ehjma")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+shape = SubResource("CapsuleShape2D_7lehc")
