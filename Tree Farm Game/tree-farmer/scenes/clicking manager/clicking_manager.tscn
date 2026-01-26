@@ -1,13 +1,14 @@
-[gd_scene load_steps=10 format=3 uid="uid://dn3ifpgx4o83l"]
+[gd_scene load_steps=11 format=3 uid="uid://dn3ifpgx4o83l"]
 
 [ext_resource type="Script" uid="uid://dtn01exxhmfny" path="res://scenes/clicking manager/clicking_manager.gd" id="1_c07ay"]
+[ext_resource type="PackedScene" uid="uid://dvirni55s43hp" path="res://effects/hit_particles.tscn" id="2_88jcx"]
 [ext_resource type="Texture2D" uid="uid://dc418wfk6lqyj" path="res://assets/graphics/cursors/resize_d_cross_diagonal.png" id="2_nj7j4"]
 
 [sub_resource type="Curve" id="Curve_jvpev"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.9873948, 0), -3.00843, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_88jcx"]
+[sub_resource type="CurveTexture" id="CurveTexture_jvpev"]
 curve = SubResource("Curve_jvpev")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_548et"]
@@ -18,7 +19,7 @@ initial_velocity_max = 175.0
 gravity = Vector3(0, 300, 0)
 scale_min = 3.0
 scale_max = 3.0
-scale_curve = SubResource("CurveTexture_88jcx")
+scale_curve = SubResource("CurveTexture_jvpev")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_15rgw"]
 size = Vector2(32, 32)
@@ -65,8 +66,10 @@ _data = {
 top_level = true
 z_index = 100
 script = ExtResource("1_c07ay")
+hit_particles = ExtResource("2_88jcx")
 
 [node name="HitParticles" type="GPUParticles2D" parent="."]
+visible = false
 z_index = 10
 emitting = false
 amount = 24

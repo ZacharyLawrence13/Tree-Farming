@@ -3,11 +3,12 @@ extends Area2D
 
 @export var click_damage: int = 0
 @export var click_cooldown: float = 0.5
+@export var hit_particles: PackedScene
 
 @onready var clicking_collision: CollisionShape2D = $ClickingCollision
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var chop_cursor: Sprite2D = $CanvasLayer/ChopCursor
-@onready var hit_particles: GPUParticles2D = $HitParticles
+#@onready var hit_particles: GPUParticles2D = $HitParticles
 @onready var chop_cooldown_timer: Timer = $ChopCooldownTimer
 @onready var cursor_progressbar: ProgressBar = $CursorControl/CursorProgressbar
 
@@ -40,7 +41,10 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("left_click"):
 		if can_chop:
 			animation_player.current_animation = "click"
-			hit_particles.restart()
+			var hit_part = hit_particles.instantiate()
+			add_child(hit_part)
+			hit_part.restart()
+			#hit_particles.restart()
 			for tree in targets:
 				tree.hit(click_damage)
 			chop_cooldown_timer.start()
