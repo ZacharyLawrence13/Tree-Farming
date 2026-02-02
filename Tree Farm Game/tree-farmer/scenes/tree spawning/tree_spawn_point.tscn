@@ -1,6 +1,32 @@
-[gd_scene load_steps=2 format=3 uid="uid://c4lx3a7y5j22c"]
+[gd_scene format=3 uid="uid://c4lx3a7y5j22c"]
 
 [ext_resource type="Script" uid="uid://dp3a4n8hqv7hd" path="res://scenes/tree spawning/tree_spawn_point.gd" id="1_3v3bq"]
+[ext_resource type="Theme" uid="uid://c83fms1gj1tns" path="res://main_theme.tres" id="2_7jlqe"]
+[ext_resource type="Script" uid="uid://ggca0u5nv5jj" path="res://scenes/gui/tree_spawn_point_gui.gd" id="3_36hfn"]
 
-[node name="TreeSpawnPoint" type="Node2D"]
+[node name="TreeSpawnPoint" type="Node2D" unique_id=1324338669]
 script = ExtResource("1_3v3bq")
+
+[node name="TreeSpawnPointGUI" type="Control" parent="." unique_id=968014819]
+custom_minimum_size = Vector2(120, 75)
+layout_mode = 3
+anchors_preset = 0
+offset_left = -60.0
+offset_top = 30.0
+offset_right = 60.0
+offset_bottom = 105.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+theme = ExtResource("2_7jlqe")
+script = ExtResource("3_36hfn")
+
+[node name="PurchaseSpawnPointButton" type="Button" parent="TreeSpawnPointGUI" unique_id=783741798]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "1"
+
+[connection signal="pressed" from="TreeSpawnPointGUI/PurchaseSpawnPointButton" to="." method="activate_spawn_point"]

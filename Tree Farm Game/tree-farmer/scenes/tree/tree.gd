@@ -3,16 +3,19 @@ extends Node2D
 
 @export var tree_data: TreeResource
 @export var tree_piece: PackedScene
+@export var tree_piece_scene: PackedScene
 
 @onready var tree_sprite: Sprite2D = $TreeSprite
 @onready var chopping_collision: CollisionShape2D = $TreeChoppingArea2D/ChoppingCollision
 @onready var animation_player: AnimationPlayer = $AnimationPlayer # mostly for hit testing
+@onready var tree_chopping_area_2d: Area2D = $TreeChoppingArea2D
 @onready var hit_sfx: AudioStreamPlayer2D = $HitSFX
 @onready var tree_gui: Control = $TreeGUI
 
 const SFX_PITCH_SCALE_MIN: float = 0.7
 const SFX_PITCH_SCALE_MAX: float = 1.3
 
+var local_tree_piece_sprite_reference: CompressedTexture2D
 var spawn_point: TreeSpawnPoint
 var health: int
 
@@ -30,8 +33,26 @@ func hit(hit_amount: int) -> void:
 		if spawn_point:
 			spawn_point.release(self)
 		Events.tree_destroyed.emit(self)
-		await hit_sfx.finished
-		call_deferred("queue_free")
+		destroy_tree()
+
+func destroy_tree() -> void:
+	tree_sprite.hide()
+	tree_gui.hide()
+	tree_chopping_area_2d.monitorable = false
+	tree_chopping_area_2d.monitoring = false
+	var tree_size_y: float = tree_data.tree_texture.get_size().y
+	var piece_count: int = tree_data.break_pieces
+	var step: float = tree_size_y / piece_count
+	
+	for i in range(piece_count):
+		var piece = tree_piece_scene.instantiate()
+		var y_offset = (i + 0.5) * step
+		piece.global_position = global_position + Vector2(0, -tree_size_y / 2 + y_offset)
+		piece.get_node("Sprite2D").texture = local_tree_piece_sprite_reference
+		get_parent().add_child(piece)
+	
+	await get_tree().create_timer(2).timeout
+	queue_free()
 
 #region Apply Juice
 func play_sfx() -> void:
@@ -46,6 +67,8 @@ func set_tree_data() -> void:
 	hit_sfx.stream = tree_data.tree_hit_noise
 	set_chopping_collision()
 	health = tree_data.tree_health
+	local_tree_piece_sprite_reference = tree_data.tree_piece_texture
+	print (local_tree_piece_sprite_reference)
 
 func set_chopping_collision() -> void:
 	if not tree_sprite.texture:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cr7fpyd7pj7tj"]
+[gd_scene format=3 uid="uid://cr7fpyd7pj7tj"]
 
 [ext_resource type="Script" uid="uid://cx7n31emgw68d" path="res://scenes/tree/tree.gd" id="1_avsvi"]
 [ext_resource type="PackedScene" uid="uid://ctrrj1g83rsvj" path="res://scenes/tree_piece.tscn" id="2_4ol1s"]
@@ -43,23 +43,22 @@ _data = {
 &"tree_hit": SubResource("Animation_vplca")
 }
 
-[node name="Tree" type="Node2D" groups=["tree"]]
+[node name="Tree" type="Node2D" unique_id=1036956066 groups=["tree"]]
 script = ExtResource("1_avsvi")
 tree_piece = ExtResource("2_4ol1s")
+tree_piece_scene = ExtResource("2_4ol1s")
 
-[node name="TreeSprite" type="Sprite2D" parent="."]
+[node name="TreeSprite" type="Sprite2D" parent="." unique_id=233602494]
 texture = ExtResource("2_vplca")
 centered = false
 
-[node name="TreeChoppingArea2D" type="Area2D" parent="." groups=["trunk"]]
+[node name="TreeChoppingArea2D" type="Area2D" parent="." unique_id=287860878 groups=["trunk"]]
 
-[node name="ChoppingCollision" type="CollisionShape2D" parent="TreeChoppingArea2D"]
+[node name="ChoppingCollision" type="CollisionShape2D" parent="TreeChoppingArea2D" unique_id=488317890]
 
-[node name="HitSFX" type="AudioStreamPlayer2D" parent="."]
+[node name="HitSFX" type="AudioStreamPlayer2D" parent="." unique_id=162198466]
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_qd6xs")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=594510507]
+libraries/ = SubResource("AnimationLibrary_qd6xs")
 
-[node name="TreeGUI" parent="." instance=ExtResource("3_viusy")]
+[node name="TreeGUI" parent="." unique_id=157107142 instance=ExtResource("3_viusy")]

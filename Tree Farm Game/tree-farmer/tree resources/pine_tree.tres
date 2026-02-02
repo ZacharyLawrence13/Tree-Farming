@@ -1,15 +1,18 @@
-[gd_resource type="Resource" script_class="TreeResource" load_steps=4 format=3 uid="uid://c4jky3awhecu7"]
+[gd_resource type="Resource" script_class="TreeResource" format=3 uid="uid://c4jky3awhecu7"]
 
 [ext_resource type="Script" uid="uid://dlq72ijj5831v" path="res://custom resources/tree_resource.gd" id="1_qb1ju"]
 [ext_resource type="AudioStream" uid="uid://cii7lw3mkxkod" path="res://assets/audio/sfx/pine-tree-hit.mp3" id="2_37l3r"]
-[ext_resource type="Texture2D" uid="uid://ciglw7t2iff4s" path="res://assets/graphics/trees/pine tree.png" id="2_mm756"]
+[ext_resource type="Texture2D" uid="uid://btgxwcxeffxwt" path="res://assets/graphics/trees/EasternWhitePine.png" id="3_37l3r"]
+[ext_resource type="Texture2D" uid="uid://dcgiy2b7c35jt" path="res://assets/graphics/trees/EasternWhitePinePiece.png" id="3_bdw8q"]
 
 [resource]
 script = ExtResource("1_qb1ju")
-tree_texture = ExtResource("2_mm756")
+tree_texture = ExtResource("3_37l3r")
+tree_piece_texture = ExtResource("3_bdw8q")
 tree_hit_noise = ExtResource("2_37l3r")
 tree_health = 10
 trunk_width = 80
-trunk_height = 150
+trunk_height = 399
 tree_value = 1
+break_pieces = 5
 metadata/_custom_type_script = "uid://dlq72ijj5831v"

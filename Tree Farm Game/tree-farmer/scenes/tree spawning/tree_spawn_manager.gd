@@ -23,7 +23,7 @@ func spawn_tree(amount: int):
 		var tree_type: TreeResource = tree_type_resources.pick_random()
 		tree.tree_data = tree_type
 		tree.spawn_point = spawn_point
-		tree.global_position = spawn_point.global_position
+		tree.position = spawn_point.position
 		add_child(tree)
 		spawn_point.claim(tree)
 		Events.tree_spawned.emit(tree)

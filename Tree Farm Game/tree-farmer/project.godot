@@ -8,17 +8,22 @@
 
 config_version=5
 
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
 [application]
 
 config/name="Tree Farmer"
 run/main_scene="uid://bbghtfkh8llm0"
-config/features=PackedStringArray("4.5", "Forward Plus")
+config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 Events="*res://globals/events.gd"
 Upgrades="*res://globals/upgrades.gd"
+PlayerGold="*uid://diq3cnw3h1na1"
 
 [display]
 
@@ -30,6 +35,13 @@ window/stretch/mode="viewport"
 mouse_cursor/custom_image="uid://dc418wfk6lqyj"
 mouse_cursor/custom_image_hotspot=Vector2(16, 16)
 mouse_cursor/tooltip_position_offset=Vector2(100, 100)
+
+[file_customization]
+
+folder_colors={
+"res://assets/": "red",
+"res://scenes/": "green"
+}
 
 [input]
 
