@@ -58,6 +58,8 @@ centered = false
 
 [node name="HitSFX" type="AudioStreamPlayer2D" parent="." unique_id=162198466]
 
+[node name="DestroySFX" type="AudioStreamPlayer2D" parent="." unique_id=1204375249]
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=594510507]
 libraries/ = SubResource("AnimationLibrary_qd6xs")
 

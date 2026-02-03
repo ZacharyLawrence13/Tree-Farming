@@ -2,12 +2,14 @@
 
 [ext_resource type="Script" uid="uid://dlq72ijj5831v" path="res://custom resources/tree_resource.gd" id="1_65ubj"]
 [ext_resource type="Texture2D" uid="uid://db7xd1l86860u" path="res://assets/graphics/trees/spruce tree.png" id="2_3078h"]
+[ext_resource type="AudioStream" uid="uid://bia2va8j0que0" path="res://assets/audio/sfx/spruce_destroy_sfx.mp3" id="2_ox52w"]
 [ext_resource type="AudioStream" uid="uid://b47dqpaqrjg17" path="res://assets/audio/sfx/spruce-tree-hit.mp3" id="2_xyqs2"]
 
 [resource]
 script = ExtResource("1_65ubj")
 tree_texture = ExtResource("2_3078h")
 tree_hit_noise = ExtResource("2_xyqs2")
+tree_destroy_noise = ExtResource("2_ox52w")
 tree_health = 20
 trunk_width = 75
 trunk_height = 50

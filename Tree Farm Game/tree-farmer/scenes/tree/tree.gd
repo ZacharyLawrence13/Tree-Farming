@@ -10,6 +10,7 @@ extends Node2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer # mostly for hit testing
 @onready var tree_chopping_area_2d: Area2D = $TreeChoppingArea2D
 @onready var hit_sfx: AudioStreamPlayer2D = $HitSFX
+@onready var destroy_sfx: AudioStreamPlayer2D = $DestroySFX
 @onready var tree_gui: Control = $TreeGUI
 
 const SFX_PITCH_SCALE_MIN: float = 0.7
@@ -35,7 +36,14 @@ func hit(hit_amount: int) -> void:
 		Events.tree_destroyed.emit(self)
 		destroy_tree()
 
+func cleanup_tree_death() -> void:
+	destroy_sfx.play()
+	tree_sprite.queue_free()
+	tree_gui.queue_free()
+	tree_chopping_area_2d.queue_free()
+
 func destroy_tree() -> void:
+	cleanup_tree_death()
 	tree_sprite.hide()
 	tree_gui.hide()
 	tree_chopping_area_2d.monitorable = false
@@ -65,6 +73,7 @@ func set_tree_data() -> void:
 	tree_sprite.offset = Vector2(tree_data.tree_texture.get_size().x / -2, tree_data.tree_texture.get_size().y * -1)
 	tree_sprite.texture = tree_data.tree_texture
 	hit_sfx.stream = tree_data.tree_hit_noise
+	destroy_sfx.stream = tree_data.tree_destroy_noise
 	set_chopping_collision()
 	health = tree_data.tree_health
 	local_tree_piece_sprite_reference = tree_data.tree_piece_texture

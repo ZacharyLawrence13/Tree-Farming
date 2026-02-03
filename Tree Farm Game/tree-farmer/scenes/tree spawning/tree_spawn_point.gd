@@ -41,6 +41,6 @@ func release(tree: TreeObject) -> void:
 	occupying_tree = null
 	emit_signal("released", self)
 
-func _on_purchased_spawn_point(spawn_point: TreeSpawnPoint) -> void:
+func _on_purchased_spawn_point(_spawn_point: TreeSpawnPoint) -> void:
 	spawn_point_cost *= 2
 	tree_spawn_point_gui.update_button_price(spawn_point_cost)

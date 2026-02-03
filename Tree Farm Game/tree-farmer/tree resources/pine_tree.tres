@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dlq72ijj5831v" path="res://custom resources/tree_resource.gd" id="1_qb1ju"]
 [ext_resource type="AudioStream" uid="uid://cii7lw3mkxkod" path="res://assets/audio/sfx/pine-tree-hit.mp3" id="2_37l3r"]
+[ext_resource type="AudioStream" uid="uid://cl7ru7ux755x2" path="res://assets/audio/sfx/white_pine_destroy_sfx.mp3" id="2_nba4c"]
 [ext_resource type="Texture2D" uid="uid://btgxwcxeffxwt" path="res://assets/graphics/trees/EasternWhitePine.png" id="3_37l3r"]
 [ext_resource type="Texture2D" uid="uid://dcgiy2b7c35jt" path="res://assets/graphics/trees/EasternWhitePinePiece.png" id="3_bdw8q"]
 
@@ -10,6 +11,7 @@ script = ExtResource("1_qb1ju")
 tree_texture = ExtResource("3_37l3r")
 tree_piece_texture = ExtResource("3_bdw8q")
 tree_hit_noise = ExtResource("2_37l3r")
+tree_destroy_noise = ExtResource("2_nba4c")
 tree_health = 10
 trunk_width = 80
 trunk_height = 399
