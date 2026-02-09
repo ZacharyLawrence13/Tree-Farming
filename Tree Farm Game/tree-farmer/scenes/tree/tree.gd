@@ -77,7 +77,6 @@ func set_tree_data() -> void:
 	set_chopping_collision()
 	health = tree_data.tree_health
 	local_tree_piece_sprite_reference = tree_data.tree_piece_texture
-	print (local_tree_piece_sprite_reference)
 
 func set_chopping_collision() -> void:
 	if not tree_sprite.texture:
