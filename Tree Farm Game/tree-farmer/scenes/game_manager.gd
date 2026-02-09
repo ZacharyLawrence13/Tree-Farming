@@ -6,4 +6,4 @@ func _ready() -> void:
 	Events.tree_destroyed.connect(_on_tree_destroyed)
 
 func _on_tree_destroyed(_tree: TreeObject) -> void:
-	label_2.text = str(PlayerGold.gold_amount)
+	label_2.text = str(PlayerWood.gold_amount)

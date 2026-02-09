@@ -1,0 +1,87 @@
+[gd_scene format=3 uid="uid://fw0esibjxak1"]
+
+[ext_resource type="Theme" uid="uid://c83fms1gj1tns" path="res://main_theme.tres" id="1_xqga4"]
+[ext_resource type="Script" uid="uid://db3xutsveeqrl" path="res://scenes/menus/main_menu.gd" id="2_ovrgc"]
+[ext_resource type="PackedScene" uid="uid://bbghtfkh8llm0" path="res://scenes/game_scene.tscn" id="3_2o76q"]
+
+[node name="MainMenu" type="Control" unique_id=646397015]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme = ExtResource("1_xqga4")
+script = ExtResource("2_ovrgc")
+game_scene = ExtResource("3_2o76q")
+
+[node name="StandardMenu" type="Control" parent="." unique_id=311883796]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="StandardMenu" unique_id=744442127]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 582.0
+offset_top = -197.0
+offset_right = -582.0
+offset_bottom = 197.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="StandardMenu/VBoxContainer" unique_id=1606195050]
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "TREE CHOPPAH"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SpacingContainer1" type="Container" parent="StandardMenu/VBoxContainer" unique_id=87062221]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+
+[node name="PlayButton" type="Button" parent="StandardMenu/VBoxContainer" unique_id=1680064932]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+text = "PLAY GAME"
+
+[node name="SpacingContainer2" type="Container" parent="StandardMenu/VBoxContainer" unique_id=1057024895]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="OptionsButton" type="Button" parent="StandardMenu/VBoxContainer" unique_id=2039132261]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+text = "OPTIONS"
+
+[node name="SpacingContainer3" type="Container" parent="StandardMenu/VBoxContainer" unique_id=583928699]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+
+[node name="QuitButton" type="Button" parent="StandardMenu/VBoxContainer" unique_id=302000176]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+text = "QUIT"
+
+[node name="OptionsMenu" type="Control" parent="." unique_id=1134704215]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
+
+[connection signal="pressed" from="StandardMenu/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="StandardMenu/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="StandardMenu/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

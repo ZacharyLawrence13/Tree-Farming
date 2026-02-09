@@ -57,7 +57,7 @@ func destroy_tree() -> void:
 		var y_offset = (i + 0.5) * step
 		piece.global_position = global_position + Vector2(0, -tree_size_y / 2 + y_offset)
 		piece.get_node("Sprite2D").texture = local_tree_piece_sprite_reference
-		get_parent().add_child(piece)
+		add_child(piece)
 	
 	await get_tree().create_timer(2).timeout
 	queue_free()

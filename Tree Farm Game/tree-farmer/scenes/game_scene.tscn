@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dn3ifpgx4o83l" path="res://scenes/clicking manager/clicking_manager.tscn" id="1_bw6k5"]
 [ext_resource type="PackedScene" uid="uid://cr7fpyd7pj7tj" path="res://scenes/tree/tree.tscn" id="1_onqr8"]
 [ext_resource type="PackedScene" uid="uid://5awldt808foa" path="res://scenes/tree spawning/tree_spawn_manager.tscn" id="2_rurhu"]
+[ext_resource type="PackedScene" uid="uid://liu2o3bk6g1l" path="res://scenes/day_cycle_manager.tscn" id="2_rvs2r"]
 [ext_resource type="Resource" uid="uid://c4jky3awhecu7" path="res://tree resources/pine_tree.tres" id="2_ycayy"]
 [ext_resource type="Script" uid="uid://dlq72ijj5831v" path="res://custom resources/tree_resource.gd" id="3_kk2rg"]
 [ext_resource type="Theme" uid="uid://c83fms1gj1tns" path="res://main_theme.tres" id="5_y3j0m"]
@@ -20,22 +21,12 @@ size = Vector2(2028, 444)
 [node name="ClickingManager" parent="." unique_id=886010439 instance=ExtResource("1_bw6k5")]
 click_damage = 3
 
+[node name="DayCycleManager" parent="." unique_id=122806213 instance=ExtResource("2_rvs2r")]
+
 [node name="TreeSpawnManager" parent="." unique_id=320084879 instance=ExtResource("2_rurhu")]
 position = Vector2(0, 691)
 tree_type_resources = Array[ExtResource("3_kk2rg")]([ExtResource("2_ycayy")])
 tree_scene = ExtResource("1_onqr8")
-
-[node name="BackgroundSprite" type="Sprite2D" parent="." unique_id=1469993775]
-z_index = -2
-position = Vector2(974, 270.00003)
-scale = Vector2(1.0614583, 1.0564815)
-texture = ExtResource("9_mw25s")
-
-[node name="Vignette" type="Sprite2D" parent="." unique_id=988613833]
-z_index = -1
-position = Vector2(954.99994, 540.99994)
-scale = Vector2(1.5281252, 1.4999998)
-texture = ExtResource("7_tcjrq")
 
 [node name="UpgradeManager" type="Node" parent="." unique_id=734049140 node_paths=PackedStringArray("clickingManager", "treeSpawnManager")]
 script = ExtResource("7_mw25s")
@@ -157,6 +148,18 @@ shape = SubResource("RectangleShape2D_tcjrq")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1552150940]
 position = Vector2(960, 540)
+
+[node name="BackgroundSprite" type="Sprite2D" parent="Camera2D" unique_id=1469993775]
+z_index = -2
+position = Vector2(14, -269.99997)
+scale = Vector2(1.0614583, 1.0564815)
+texture = ExtResource("9_mw25s")
+
+[node name="Vignette" type="Sprite2D" parent="Camera2D" unique_id=988613833]
+z_index = -1
+position = Vector2(-5.000061, 0.99993896)
+scale = Vector2(1.5281252, 1.4999998)
+texture = ExtResource("7_tcjrq")
 
 [connection signal="pressed" from="CanvasLayer/UpgradeGUI/HBoxContainer/DamageUpgrade" to="CanvasLayer/UpgradeGUI" method="_on_damage_upgrade_pressed"]
 [connection signal="pressed" from="CanvasLayer/UpgradeGUI/HBoxContainer/SpeedUpgrade" to="CanvasLayer/UpgradeGUI" method="_on_speed_upgrade_pressed"]

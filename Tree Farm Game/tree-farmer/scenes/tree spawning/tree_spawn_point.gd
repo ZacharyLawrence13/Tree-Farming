@@ -18,10 +18,10 @@ func _ready() -> void:
 	Events.purchased_spawn_point.connect(_on_purchased_spawn_point)
 
 func activate_spawn_point() -> void:
-	if PlayerGold.gold_amount >= spawn_point_cost:
+	if PlayerWood.gold_amount >= spawn_point_cost:
 		is_active = true
 		tree_spawn_point_gui.hide_buy_button()
-		PlayerGold.subtract_gold(spawn_point_cost)
+		PlayerWood.subtract_gold(spawn_point_cost)
 		Events.purchased_spawn_point.emit(self)
 
 func is_occupied() -> bool:

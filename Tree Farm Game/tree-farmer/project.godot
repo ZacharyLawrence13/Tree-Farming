@@ -15,7 +15,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="Tree Farmer"
-run/main_scene="uid://bbghtfkh8llm0"
+run/main_scene="uid://fw0esibjxak1"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -23,7 +23,7 @@ config/icon="res://icon.svg"
 
 Events="*res://globals/events.gd"
 Upgrades="*res://globals/upgrades.gd"
-PlayerGold="*uid://diq3cnw3h1na1"
+PlayerWood="*uid://diq3cnw3h1na1"
 
 [display]
 
@@ -32,9 +32,6 @@ window/size/viewport_height=1080
 window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="viewport"
-mouse_cursor/custom_image="uid://dc418wfk6lqyj"
-mouse_cursor/custom_image_hotspot=Vector2(16, 16)
-mouse_cursor/tooltip_position_offset=Vector2(100, 100)
 
 [file_customization]
 

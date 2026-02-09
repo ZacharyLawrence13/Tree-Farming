@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://liu2o3bk6g1l"]
+
+[ext_resource type="Theme" uid="uid://c83fms1gj1tns" path="res://main_theme.tres" id="1_1ulal"]
+[ext_resource type="Script" uid="uid://chptmp7878yfc" path="res://scenes/day_cycle_manager.gd" id="1_2wrtp"]
+
+[node name="DayCycleManager" type="Node2D" unique_id=122806213]
+script = ExtResource("1_2wrtp")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=216152630]
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=1096596131]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_1ulal")
+
+[node name="Button" type="Button" parent="CanvasLayer/Control" unique_id=1093562310]
+layout_mode = 1
+offset_left = 62.0
+offset_top = 77.0
+offset_right = 225.0
+offset_bottom = 140.0
+text = "End Day"
+
+[node name="Label" type="Label" parent="CanvasLayer/Control" unique_id=1885994518]
+layout_mode = 1
+offset_left = 107.0
+offset_top = 31.0
+offset_right = 176.0
+offset_bottom = 72.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme_override_font_sizes/font_size = 40
+text = "Day 1"
+horizontal_alignment = 1
+vertical_alignment = 1
